@@ -76,8 +76,10 @@ void Term_Task(void *p)
             Rx_Buffer[Buffer_Idx] = 0U;
 
             Lpuart_Uart_Ip_SyncSend(UART_INSTANCE, (const uint8_t*)"Received: ", 10U, 50000);
-            Lpuart_Uart_Ip_SyncSend(UART_INSTANCE, (const uint8_t*)Rx_Buffer,
-                                     strlen((const char*)Rx_Buffer), 50000);
+            if (strlen((const char*)Rx_Buffer) > 0)
+            {
+            	Lpuart_Uart_Ip_SyncSend(UART_INSTANCE, (const uint8_t*)Rx_Buffer, strlen((const char*)Rx_Buffer), 50000);
+            }
             Lpuart_Uart_Ip_SyncSend(UART_INSTANCE, (const uint8_t*)"\r\n", 2U, 50000);
 
             Siul2_Dio_Ip_TogglePins(LED_PORT, (1U << LED_PIN));
