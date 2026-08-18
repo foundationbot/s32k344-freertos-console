@@ -28,12 +28,16 @@ uint32 MsgIdx = 1U;
 Flexcan_Ip_DataInfoType RxInfo = {
         .msg_id_type = FLEXCAN_MSG_ID_STD,
         .data_length = 64U,
+		.fd_enable = TRUE,
+		.fd_padding  = 0U,
+		.enable_brs  = TRUE,
         .is_polling = FALSE,
         .is_remote = FALSE
 };
 Flexcan_Ip_DataInfoType TxInfo = {
         .msg_id_type = FLEXCAN_MSG_ID_STD,
         .data_length = 64U,
+		.fd_enable = TRUE,
 		.fd_padding  = 0U,
 		.enable_brs  = TRUE,
         .is_polling = FALSE,
